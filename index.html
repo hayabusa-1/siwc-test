@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yumster - Menu Search Service</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff6f61;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        main {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #e55a50;
+        }
+
+        .results {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .results ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .results li {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .results li h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .results li p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #666;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Yumster</h1>
+        <p>Discover dishes you love, menu by menu.</p>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" placeholder="Search for a dish, cuisine, or ingredient..." id="search-bar">
+            <button onclick="performSearch()">Search</button>
+        </div>
+
+        <div class="results" id="results">
+            <ul></ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yumster. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function performSearch() {
+            const query = document.getElementById('search-bar').value;
+            const resultsDiv = document.getElementById('results');
+            const ul = resultsDiv.querySelector('ul');
+            ul.innerHTML = '';
+
+            if (!query) {
+                ul.innerHTML = '<li><p>Please enter a search query.</p></li>';
+                return;
+            }
+
+            const mockResults = [
+                { name: 'Spaghetti Carbonara', description: 'Classic Italian pasta with creamy sauce and pancetta.' },
+                { name: 'Margherita Pizza', description: 'Fresh mozzarella, basil, and tomato sauce on a wood-fired crust.' },
+                { name: 'Tiramisu', description: 'Traditional coffee-flavored Italian dessert.' }
+            ];
+
+            mockResults.forEach(item => {
+                const li = document.createElement('li');
+                const title = document.createElement('h3');
+                const description = document.createElement('p');
+
+                title.textContent = item.name;
+                description.textContent = item.description;
+
+                li.appendChild(title);
+                li.appendChild(description);
+                ul.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
